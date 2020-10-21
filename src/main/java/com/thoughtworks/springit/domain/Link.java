@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
@@ -28,4 +29,22 @@ public class Link extends Auditable {
 	
 	@OneToMany(mappedBy = "link")
 	List<Comment> comments = new ArrayList<Comment>();
+
+	public Link(@NonNull String title, @NonNull String url) {
+		super();
+		this.title = title;
+		this.url = url;
+	}
+
+	public void addComment(Comment comment) {
+		comments.add(comment);
+	}
+	
+	public String getTitle() {
+		return title;
+	}
+
+	public String getUrl() {
+		return url;
+	}
 }
